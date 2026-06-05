@@ -1,9 +1,9 @@
 import React from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
-import Navbar from "./components/navbar";
-import Sidebar from "./components/sidebar";
+import Navbar from "./components/Navbar";
+import Sidebar from "./components/Sidebar";
 import Customers from "./Pages/Customers";
-import Dashboard from "./pages/Dashboard";
+import Dashboard from "./Pages/Dashboard";
 import Logout from "./Pages/Logout";
 import Orders from "./Pages/Orders";
 import Payments from "./Pages/Payments";
