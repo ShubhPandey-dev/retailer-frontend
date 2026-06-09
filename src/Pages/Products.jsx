@@ -21,7 +21,7 @@ function Products() {
   async function getData() {
     try {
       const result = await fetch(
-        "http://localhost:5000/retailer/products/viewproducts"
+        "https://ecom-common-backend.onrender.com/retailer/products/viewproducts"
       );
       const res = await result.json();
 
@@ -49,7 +49,7 @@ function Products() {
 
     try {
       const result = await fetch(
-        "http://localhost:5000/retailer/products/addproducts",
+        "https://ecom-common-backend.onrender.com/retailer/products/addproducts",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -86,7 +86,7 @@ function Products() {
 
     try {
       const result = await fetch(
-        `http://localhost:5000/retailer/products/updateproducts/${editingId}`,
+        `https://ecom-common-backend.onrender.com/retailer/products/updateproducts/${editingId}`,
         {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
@@ -154,7 +154,7 @@ function Products() {
 
     try {
       const result = await fetch(
-        `http://localhost:5000/retailer/products/deleteproducts/${id}`,
+        `https://ecom-common-backend.onrender.com/retailer/products/deleteproducts/${id}`,
         {
           method: "DELETE",
         }

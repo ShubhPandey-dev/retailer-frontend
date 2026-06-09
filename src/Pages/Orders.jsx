@@ -6,7 +6,7 @@ function Orders() {
   let [orders , setOrders] = useState([]);
 
   async function getOrders(){
-    let res = await fetch ('http://localhost:5000/orders/vieworders');
+    let res = await fetch ('https://ecom-common-backend.onrender.com/orders/vieworders');
     let result = await res.json();
     setOrders(result);
   }

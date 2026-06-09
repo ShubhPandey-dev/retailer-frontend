@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Sidebar from "./components/Sidebar";
@@ -14,17 +14,30 @@ import Settings from "./Pages/Settings";
 
 const ProtectedLayout = ({ children }) => {
   const token = localStorage.getItem("retailer_token");
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   if (!token) {
     return <Navigate to="/login" replace />;
   }
 
   return (
-    <div className="h-screen flex overflow-hidden bg-slate-100">
-      <Sidebar />
-      <div className="flex-1 flex flex-col min-w-0">
-        <Navbar />
-        <main className="flex-1 overflow-y-auto p-6">{children}</main>
+    <div className="flex h-screen overflow-hidden bg-slate-100">
+      {isSidebarOpen ? (
+        <button
+          type="button"
+          aria-label="Close sidebar"
+          className="fixed inset-0 z-40 bg-slate-950/45 lg:hidden"
+          onClick={() => setIsSidebarOpen(false)}
+        />
+      ) : null}
+
+      <Sidebar
+        isOpen={isSidebarOpen}
+        onClose={() => setIsSidebarOpen(false)}
+      />
+      <div className="flex min-w-0 flex-1 flex-col">
+        <Navbar onMenuClick={() => setIsSidebarOpen(true)} />
+        <main data-shell-scroll className="flex-1 overflow-y-auto p-3 sm:p-4 lg:p-6">{children}</main>
       </div>
     </div>
   );
